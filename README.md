@@ -115,6 +115,7 @@ sentence contains more than one unique token, we calculate the average masked to
 probability by masking each distinct token separately. The percentage of examples for which a
 model assigns a higher masked token probability to the stereotypical sentence as opposed to
 the anti-stereotypical sentence is known as the stereotype score of the model.
+
 **Debiasing Techniques**
 1. Contrafactual Data Augmentation : is a data-driven debiasing technique that's
 frequently applied to reduce gender bias. The general idea behind CDA is to rebalance a
@@ -126,6 +127,7 @@ training. Although gender debiasing has been the primary application of CDA, we 
 assess its efficacy for other kinds of biases. To generate counterfactual examples, we
 can swap out religious terms in a corpus, such as "church" with "mosque," in order to
 create CDA data for mitigating religious bias.
+
 2. **Dropout:** The use of dropout regularization (Srivastava et al., 2014) as a bias mitigation
 strategy is examined by Webster et al. (2020). They look into doing an extra pre-training
 phase and raising the dropout parameters for the attention weights and hidden
@@ -136,6 +138,7 @@ disrupting the attention mechanisms in BERT and ALBERT. We expand this research 
 include additional bias kinds. We use increased dropout regularization to conduct an
 additional pre-training phase on sentences from English Wikipedia, in a manner similar
 to CDA.
+
 3. **Self Debias:** A post-hoc debiasing method is put forth by S. Schick et al. (2021) that
 makes use of a model's internal knowledge to dissuade it from producing biased text.
 Informally, Schick et al. (2021) suggest that a model be first encouraged to generate
@@ -159,6 +162,7 @@ cannot be applied to downstream NLU tasks (e.g., GLUE) as a bias mitigation stra
 Furthermore, we are unable to assess SEAT because it measures bias in a model's
 representations, whereas Self-Debias does not change a model's internal
 representations.
+
 4. **Sentence Debias :** In 2020, Liang et al. expand Bolukbasi et al. (2016) introduced the
 word embedding debiasing technique known as Hard-Debias representations of
 sentences. Sentence Debias is a projection-based method of debiasing that needs
@@ -175,6 +179,7 @@ estimated. A pre-trained model can yield a corresponding representation for ever
 sentence that was acquired during the contextualization step. Following that, the
 principal directions of variation of the resulting data are estimated using Principal
 Component Analysis (PCA; Abdi and Williams 2010).
+
 5. **Iterative Null Space Projection(INLP):** Similar to SentenceDebias, INLP is a
 projection-based debiasing technique proposed by Ravfogel et al. (2020).By teaching a
 linear classifier to predict the protected property you wish to remove (like gender) from the
@@ -195,6 +200,8 @@ also had minimal impact on a model’s language modeling ability. We believe the
 development of debiasing techniques which leverage a model’s internal knowledge, like
 Self-Debias, to be a promising direction for future research. Importantly, we want to be
 able to use “self-debiasing” methods when a model is being used for downstream tasks
+
+
 **Limitations**
 1) We only investigate bias mitigation techniques for language models trained in English.
 However, some of the techniques studied in our work cannot easily be extended to other
@@ -221,6 +228,7 @@ addition to assessing how well each debiasing method mitigates bias, we also loo
 effects of debiasing on language modeling and downstream NLU task performance using three
 intrinsic bias benchmarks. Our goal is to improve the direction of upcoming bias mitigation
 research with our work.
+
 **References**
 1. Yue Guo, Yi Yang, Ahmed Abbasi (2022). Auto-Debias: Debiasing Masked Language
 Models with Automated Biased Prompts. In Proceedings of the 60th Annual Meeting of the
