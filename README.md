@@ -1,6 +1,6 @@
-**Diagnosing and Debiasing Large Language Models and Respective Embeddings
+**Diagnosing and Debiasing Large Language Models and Respective Embeddings**
 
-##Table of Contents
+**Table of Contents**
 1. Abstract
 2. Introduction
 3. Objectives
@@ -9,7 +9,7 @@
 6. Results
 7. Limitations
 8. References
-Abstract
+**Abstract**
 Pre-trained language models like BERT have achieved state-of-the-art performance on many
 natural language processing tasks. However, these models often perpetuate and amplify
 societal biases present in their training data related to gender, race, and culture. This research
@@ -22,7 +22,7 @@ during training. Experiments measure the impact of our debiasing approach on tas
 performance. This research will expand literature on quantifying and addressing biases in
 natural language AI systems. We discuss limitations and future work needed to develop truly fair
 and inclusive language technologies.
-Introduction
+**Introduction**
 Large pre-trained language models have proven effective across a variety of tasks in natural
 language processing, often obtaining state of art performance. These models are trained on a
 large number of texts that originated from unmoderated sources, such as the internet. While the
@@ -31,7 +31,7 @@ the data which they are trained on. An increasing amount of research has focused
 developing techniques to mitigate these biases.
 This project focuses on diagnosing and debiasing techniques, to contribute to the development
 of fairer and more inclusive natural language processing (NLP) models.
-Objectives
+**Objectives**
 Identification of Biases: Conduct a comprehensive analysis to identify various types of biases
 present in existing language models. This includes but is not limited to gender, race, and cultural
 biases.
@@ -39,11 +39,11 @@ Measure the effects of debiasing on the overall quality and performance of sente
 embeddings.
 Implementation of De-biasing Strategies: Implement and test a combination of techniques to
 minimize biases within the language models.
-Techniques of Measuring Bias
+**Techniques of Measuring Bias**
 There are three intrinsic bias techniques to evaluate debiasing techniques. We select these
 benchmarks as they are used to measure not only gender bias but also racial and religious bias
 in language models.
-1. Sentence Encoder Association Test (SEAT): SEAT is an extension of Word Embedding
+1. **Sentence Encoder Association Test (SEAT)**: SEAT is an extension of Word Embedding
 Association Test (WEAT).
 Four-word sets are used by WEAT: two sets of target words and two sets of bias attribute words.
 A kind of bias is characterized by the attribute word sets. One way to test for gender bias is to
@@ -70,7 +70,7 @@ WEAT into synthetic sentence templates (e.g., “this is a [WORD]”) to create 
 sentences. Now, given sets of sentences containing attribute and target words, the WEAT test
 statistic can be computed using sentence-level representations obtained from a pre-trained
 language model.
-2. Stereo Set: four different forms of stereotype bias in language models are measured using a
+2. **Stereo Set:** four different forms of stereotype bias in language models are measured using a
 crowdsourced dataset. A context sentence, such as "our housekeeper is [MASK]," is included in
 each Stereo Set example, along with three potential associations (completions) for the
 sentence: one is stereotypical, one is anti-stereotypical, and the third is unrelated. In the above
@@ -88,7 +88,7 @@ percentage is what we refer to as a model's language modeling score. We compare 
 debiased models with the test set from the Stereo Set. We assess debiased models for every
 domain by comparing them to the corresponding Stereo Set test set split (for example, gender
 debiased models are assessed against the examples of gender prejudice).
-3. Crowdsourced Stereotype Pairs(CrowS-pairs):A crowdsourced dataset called
+3. **Crowdsourced Stereotype Pairs(CrowS-pairs):** A crowdsourced dataset called
 CrowS-Pairs is made up of pairs of minimally remote phrases, or sentences that differ only in a
 tiny number of characters. Each pair's opening statement presents a caricature of a historically
 marginalized American group. For instance, the statement "alcoholics reside in trailers" may
@@ -107,7 +107,7 @@ sentence contains more than one unique token, we calculate the average masked to
 probability by masking each distinct token separately. The percentage of examples for which a
 model assigns a higher masked token probability to the stereotypical sentence as opposed to
 the anti-stereotypical sentence is known as the stereotype score of the model.
-Debiasing Techniques
+**Debiasing Techniques**
 1. Contrafactual Data Augmentation : is a data-driven debiasing technique that's
 frequently applied to reduce gender bias. The general idea behind CDA is to rebalance a
 corpus by changing bias attribute words (like he/she) in a dataset. For instance,
@@ -118,7 +118,7 @@ training. Although gender debiasing has been the primary application of CDA, we 
 assess its efficacy for other kinds of biases. To generate counterfactual examples, we
 can swap out religious terms in a corpus, such as "church" with "mosque," in order to
 create CDA data for mitigating religious bias.
-2. Dropout:The use of dropout regularization (Srivastava et al., 2014) as a bias mitigation
+2. **Dropout:** The use of dropout regularization (Srivastava et al., 2014) as a bias mitigation
 strategy is examined by Webster et al. (2020). They look into doing an extra pre-training
 phase and raising the dropout parameters for the attention weights and hidden
 activations of BERT and ALBERT. Through experimentation, they discover that in these
@@ -128,7 +128,7 @@ disrupting the attention mechanisms in BERT and ALBERT. We expand this research 
 include additional bias kinds. We use increased dropout regularization to conduct an
 additional pre-training phase on sentences from English Wikipedia, in a manner similar
 to CDA.
-3. Self Debias:A post-hoc debiasing method is put forth by S. Schick et al. (2021) that
+3. **Self Debias:** A post-hoc debiasing method is put forth by S. Schick et al. (2021) that
 makes use of a model's internal knowledge to dissuade it from producing biased text.
 Informally, Schick et al. (2021) suggest that a model be first encouraged to generate
 toxic text by hand-crafted prompts. An autoregressive model might, for instance, prompt
@@ -151,7 +151,7 @@ cannot be applied to downstream NLU tasks (e.g., GLUE) as a bias mitigation stra
 Furthermore, we are unable to assess SEAT because it measures bias in a model's
 representations, whereas Self-Debias does not change a model's internal
 representations.
-4. Sentence Debias : In 2020, Liang et al. expand Bolukbasi et al. (2016) introduced the
+4. **Sentence Debias :** In 2020, Liang et al. expand Bolukbasi et al. (2016) introduced the
 word embedding debiasing technique known as Hard-Debias representations of
 sentences. Sentence Debias is a projection-based method of debiasing that needs
 estimating a linear subspace in relation to a specific kind of prejudice. Examples of
@@ -167,7 +167,7 @@ estimated. A pre-trained model can yield a corresponding representation for ever
 sentence that was acquired during the contextualization step. Following that, the
 principal directions of variation of the resulting data are estimated using Principal
 Component Analysis (PCA; Abdi and Williams 2010).
-5. Iterative Null Space Projection(INLP): Similar to SentenceDebias, INLP is a
+5. **Iterative Null Space Projection(INLP):** Similar to SentenceDebias, INLP is a
 projection-based debiasing technique proposed by Ravfogel et al. (2020).By teaching a
 linear classifier to predict the protected property you wish to remove (like gender) from the
 representations, INLP, in general, debiases the representations of a model. Subsequently,
@@ -187,40 +187,7 @@ also had minimal impact on a model’s language modeling ability. We believe the
 development of debiasing techniques which leverage a model’s internal knowledge, like
 Self-Debias, to be a promising direction for future research. Importantly, we want to be
 able to use “self-debiasing” methods when a model is being used for downstream tasks
-Why sentence transformers?
-1.It is well documented and concurred by BERT author(Devlin) that mean pooling of
-BERT cannot offer good sentence embeddings. Infact it is empirically proven by
-Riemiers that it is worser than Mean pooling context-dependent GloVe embeddings.
-1. 2.Sentence transformer SoTA can have more gender bias than vanilla BERT, but it is
-also a compressed (using distillation) and possibly reduced model.
-Worsening of Large language Model Ability
-In general, we found most debiasing techniques tend to worsen a model’s language
-modeling ability. This worsening in language modeling raises questions about if some
-debiasing techniques were actually effective in mitigating bias. Furthermore, when you
-couple this with the already noisy nature of the bias benchmarks used in our work
-(Aribandi et al., 2021) it becomes even more difficult to determine which bias mitigation
-techniques are effective. Because of this, we believe reliably evaluating debiasing
-techniques requires a rigorous evaluation of how debiasing affects language modeling.
-Results
-CrowS pairs
-For BERT, we find two of our four debiased models obtain lower average absolute effect sizes
-than the baseline model. In particular, INLP performs best on average across all six SEAT tests.
-Notably, INLP and Sentence Debias both obtain lower average absolute effect sizes than the
-baseline model while the CDA and Dropout models do not. Intuitively, this may be due to INLP
-and Sentence Debias taking a more aggressive approach to debiasing by attempting to remove
-all gender information from a model’s representations.For GPT-2, our results are less
-encouraging. We find all of the debiased models obtain higher average absolute effect sizes
-than the baseline model. However, we note that SEAT fails to detect any statistically significant
-bias in the baseline model in any of the six SEAT tests to begin with. We argue, alongside
-others (Kurita et al., 2019; May et al., 2019), that SEAT’s failure to detect bias in GPT-2 brings
-into question its reliability as a bias benchmark. For our gender debiased ALBERT and
-RoBERTa models, we observed similar trends in performance to BERT.e also use SEAT to
-evaluate racial and religious bias in our models. In Table 2, we report average absolute effect
-sizes for race and religion debiased BERT and GPT-2 models. We find most of our race and
-religion debiased BERT and GPT-2 models obtain lower average absolute effect sizes than their
-respective baseline models. These trends were less consistent in our ALBERT and RoBERTa
-models.
-Limitations
+**Limitations**
 1) We only investigate bias mitigation techniques for language models trained in English.
 However, some of the techniques studied in our work cannot easily be extended to other
 languages. For instance, many of our debiasing techniques cannot be used to mitigate gender
@@ -246,7 +213,7 @@ addition to assessing how well each debiasing method mitigates bias, we also loo
 effects of debiasing on language modeling and downstream NLU task performance using three
 intrinsic bias benchmarks. Our goal is to improve the direction of upcoming bias mitigation
 research with our work.
-References
+**References**
 1. Yue Guo, Yi Yang, Ahmed Abbasi (2022). Auto-Debias: Debiasing Masked Language
 Models with Automated Biased Prompts. In Proceedings of the 60th Annual Meeting of the
 Association for Computational Linguistics Volume1: Long Papers, pages 1012-1023 May 22-27,
