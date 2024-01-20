@@ -9,6 +9,8 @@
 6. Results
 7. Limitations
 8. References
+
+   
 **Abstract**
 Pre-trained language models like BERT have achieved state-of-the-art performance on many
 natural language processing tasks. However, these models often perpetuate and amplify
@@ -22,6 +24,7 @@ during training. Experiments measure the impact of our debiasing approach on tas
 performance. This research will expand literature on quantifying and addressing biases in
 natural language AI systems. We discuss limitations and future work needed to develop truly fair
 and inclusive language technologies.
+
 **Introduction**
 Large pre-trained language models have proven effective across a variety of tasks in natural
 language processing, often obtaining state of art performance. These models are trained on a
@@ -31,6 +34,7 @@ the data which they are trained on. An increasing amount of research has focused
 developing techniques to mitigate these biases.
 This project focuses on diagnosing and debiasing techniques, to contribute to the development
 of fairer and more inclusive natural language processing (NLP) models.
+
 **Objectives**
 Identification of Biases: Conduct a comprehensive analysis to identify various types of biases
 present in existing language models. This includes but is not limited to gender, race, and cultural
@@ -39,10 +43,12 @@ Measure the effects of debiasing on the overall quality and performance of sente
 embeddings.
 Implementation of De-biasing Strategies: Implement and test a combination of techniques to
 minimize biases within the language models.
+
 **Techniques of Measuring Bias**
 There are three intrinsic bias techniques to evaluate debiasing techniques. We select these
 benchmarks as they are used to measure not only gender bias but also racial and religious bias
 in language models.
+
 1. **Sentence Encoder Association Test (SEAT)**: SEAT is an extension of Word Embedding
 Association Test (WEAT).
 Four-word sets are used by WEAT: two sets of target words and two sets of bias attribute words.
@@ -70,6 +76,7 @@ WEAT into synthetic sentence templates (e.g., “this is a [WORD]”) to create 
 sentences. Now, given sets of sentences containing attribute and target words, the WEAT test
 statistic can be computed using sentence-level representations obtained from a pre-trained
 language model.
+
 2. **Stereo Set:** four different forms of stereotype bias in language models are measured using a
 crowdsourced dataset. A context sentence, such as "our housekeeper is [MASK]," is included in
 each Stereo Set example, along with three potential associations (completions) for the
@@ -88,6 +95,7 @@ percentage is what we refer to as a model's language modeling score. We compare 
 debiased models with the test set from the Stereo Set. We assess debiased models for every
 domain by comparing them to the corresponding Stereo Set test set split (for example, gender
 debiased models are assessed against the examples of gender prejudice).
+
 3. **Crowdsourced Stereotype Pairs(CrowS-pairs):** A crowdsourced dataset called
 CrowS-Pairs is made up of pairs of minimally remote phrases, or sentences that differ only in a
 tiny number of characters. Each pair's opening statement presents a caricature of a historically
